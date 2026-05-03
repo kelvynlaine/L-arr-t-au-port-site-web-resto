@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Anchor, Menu, X, Star, Phone } from 'lucide-react';
+import { Anchor, Menu, X, Star, Phone, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAppContext } from '../context/AppContext';
+import { t } from '../i18n';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme, language, toggleLanguage } = useAppContext();
+  const currentT = t[language];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,12 +19,11 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { name: 'Accueil', href: '#home' },
-    { name: 'Notre Histoire', href: '#about' },
-    { name: 'Carte', href: '#menu' },
-    { name: 'Galerie', href: '#gallery' },
-    { name: 'Avis', href: '#reviews' },
-    { name: 'Contact', href: '#contact' },
+    { name: currentT.nav.home, href: '#home' },
+    { name: currentT.nav.about, href: '#about' },
+    { name: currentT.nav.menu, href: '#menu' },
+    { name: currentT.nav.gallery, href: '#gallery' },
+    { name: currentT.nav.contact, href: '#contact' },
   ];
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
@@ -85,18 +88,69 @@ export default function Header() {
                 className="btn btn-primary rounded-full hover:scale-105 transition-transform"
               >
                 <Phone size={18} />
-                Nous appeler
+                {currentT.info.phone}
               </a>
+
+              {/* Toggles */}
+              <div className="flex items-center gap-2 ml-2">
+                <button 
+                  onClick={toggleTheme}
+                  className={`p-2 rounded-full transition-colors ${isScrolled ? 'text-marine dark:text-sable hover:bg-marine/10 dark:hover:bg-sable/10' : 'text-sable hover:bg-white/20'}`}
+                >
+                  {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                </button>
+                <button 
+                  onClick={toggleLanguage}
+                  className={`w-10 h-10 flex items-center justify-center rounded-full transition-colors text-xl overflow-hidden ${isScrolled ? 'hover:bg-marine/10 dark:hover:bg-sable/10' : 'hover:bg-white/20'}`}
+                >
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={language}
+                      initial={{ rotateY: 90, opacity: 0 }}
+                      animate={{ rotateY: 0, opacity: 1 }}
+                      exit={{ rotateY: -90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="inline-block"
+                    >
+                      {language === 'fr' ? '🇫🇷' : '🇬🇧'}
+                    </motion.span>
+                  </AnimatePresence>
+                </button>
+              </div>
             </div>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2 text-marine bg-sable/80 rounded-full"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile Actions */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <button 
+              onClick={toggleTheme}
+              className="p-2 text-marine dark:text-sable bg-sable/80 dark:bg-marine/80 rounded-full"
+            >
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+            <button 
+              onClick={toggleLanguage}
+              className="w-10 h-10 flex items-center justify-center text-xl bg-sable/80 dark:bg-marine/80 rounded-full overflow-hidden"
+            >
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={language}
+                  initial={{ rotateY: 90, opacity: 0 }}
+                  animate={{ rotateY: 0, opacity: 1 }}
+                  exit={{ rotateY: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {language === 'fr' ? '🇫🇷' : '🇬🇧'}
+                </motion.span>
+              </AnimatePresence>
+            </button>
+            <button
+              className="p-2 text-marine dark:text-sable bg-sable/80 dark:bg-marine/80 rounded-full"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 

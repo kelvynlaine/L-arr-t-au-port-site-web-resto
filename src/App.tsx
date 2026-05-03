@@ -7,6 +7,7 @@ import Gallery from './components/Gallery';
 import Reviews from './components/Reviews';
 import Info from './components/Info';
 import Footer from './components/Footer';
+import { AppProvider } from './context/AppContext';
 
 function App() {
   const schemaOrgJSONLD = {
@@ -40,8 +41,9 @@ function App() {
   };
 
   return (
-    <HelmetProvider>
-      <div className="font-sans text-marine dark:text-sable bg-sable dark:bg-marine transition-colors duration-300">
+    <AppProvider>
+      <HelmetProvider>
+        <div className="font-sans text-marine dark:text-sable bg-sable dark:bg-marine transition-colors duration-300">
         <Helmet>
           <title>L'arrêt au Port - Restaurant bord de mer à Cagnes-sur-Mer</title>
           <meta name="description" content="L'arrêt au Port - Restaurant en bord de mer à Cagnes-sur-Mer. Cuisine authentique, produits frais et locaux, terrasse avec vue imprenable sur la Méditerranée. Ouvert tous les jours sauf mardi et mercredi." />
@@ -65,6 +67,7 @@ function App() {
         <Footer />
       </div>
     </HelmetProvider>
+    </AppProvider>
   );
 }
 

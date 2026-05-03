@@ -2,9 +2,13 @@ import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import { MapPin, Utensils, Clock } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { useAppContext } from '../context/AppContext';
+import { t } from '../i18n';
 
 export default function Hero() {
   const [isOpen, setIsOpen] = useState(true);
+  const { language } = useAppContext();
+  const currentT = t[language];
 
   useEffect(() => {
     // Check if open based on current time and rules
@@ -77,7 +81,7 @@ export default function Hero() {
                 : 'bg-red-500/20 text-red-100 border-red-500/30'
             }`}>
               <Clock size={16} />
-              {isOpen ? "Ouvert aujourd'hui jusqu'à 23h" : "Fermé actuellement"}
+              {isOpen ? currentT.hero.open : currentT.hero.closed}
             </span>
           </motion.div>
 
@@ -89,7 +93,7 @@ export default function Hero() {
           {/* Subtitle */}
           <motion.div variants={itemVariants}>
             <p className="text-xl md:text-2xl lg:text-3xl font-light text-sable/90 mb-8 max-w-2xl mx-auto">
-              Cuisine authentique au bord de l'eau
+              {currentT.hero.subtitle}
               <br />
               <span className="text-terracotta font-medium">Cagnes-sur-Mer</span>
             </p>
@@ -98,7 +102,7 @@ export default function Hero() {
           {/* Description */}
           <motion.div variants={itemVariants}>
             <p className="text-base md:text-lg text-sable/80 mb-10 max-w-3xl mx-auto text-balance">
-              Entre la plage et le port, découvrez une cuisine simple et généreuse élaborée avec des produits locaux, frais et de saison. Une vue imprenable sur la Méditerranée, une ambiance chaleureuse et décontractée.
+              {currentT.hero.desc}
             </p>
           </motion.div>
 
@@ -109,14 +113,14 @@ export default function Hero() {
               className="btn bg-terracotta hover:bg-terracotta/90 text-white border-none rounded-full px-8 py-3 text-lg h-auto shadow-lg hover:shadow-xl hover:scale-105 transition-all"
             >
               <MapPin size={20} />
-              Nous trouver
+              {currentT.hero.findUs}
             </a>
             <a 
               href="#menu" 
               className="btn bg-sable hover:bg-white text-marine border-none rounded-full px-8 py-3 text-lg h-auto shadow-lg hover:shadow-xl hover:scale-105 transition-all"
             >
               <Utensils size={20} />
-              Voir la carte
+              {currentT.hero.menu}
             </a>
           </motion.div>
         </motion.div>

@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
 import { Waves, ChefHat, Leaf, Sun, Accessibility, Dog } from 'lucide-react';
+import { useAppContext } from '../context/AppContext';
+import { t } from '../i18n';
 
 export default function About() {
+  const { language } = useAppContext();
+  const currentT = t[language];
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -61,20 +65,20 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
           >
             <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-serif font-bold text-marine dark:text-sable mb-6">
-              Notre Histoire
+              {currentT.about.title}
             </motion.h2>
             
             <motion.div variants={itemVariants} className="w-20 h-1 bg-terracotta mb-8"></motion.div>
 
             <motion.div variants={itemVariants} className="space-y-6 text-lg text-marine/80 dark:text-sable/80">
               <p>
-                <strong>L'arrêt au Port</strong>, c'est avant tout une histoire de passion et d'authenticité. Niché à la Base Nautique de Cagnes-sur-Mer, entre la plage de galets et le petit port pittoresque, notre restaurant vous accueille dans un cadre exceptionnel, face à la mer Méditerranée.
+                <strong>L'arrêt au Port</strong>, {currentT.about.p1}
               </p>
               <p>
-                Notre philosophie est simple : une carte courte, des produits frais et locaux, une cuisine faite maison du petit-déjeuner au dessert. Pas de prétention, juste le plaisir de bien manger les pieds presque dans l'eau.
+                {currentT.about.p2}
               </p>
               <p className="font-medium italic text-marine dark:text-sable">
-                "Ici, pas de réservation possible - premier arrivé, premier servi ! Et oui, on tutoie tout le monde, c'est comme ça chez nous. Venez comme vous êtes, avec votre maillot sous le t-shirt et le sourire aux lèvres."
+                {currentT.about.quote}
               </p>
             </motion.div>
 
