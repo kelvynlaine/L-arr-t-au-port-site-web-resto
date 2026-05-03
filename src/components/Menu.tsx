@@ -192,7 +192,7 @@ export default function Menu() {
                   className="p-6 rounded-2xl border border-white/40 dark:border-white/10 bg-white/20 dark:bg-white/5 backdrop-blur-sm shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.1)] dark:hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] hover:border-white/60 dark:hover:border-white/20 hover:bg-white/30 dark:hover:bg-white/10 transition-all duration-300 group"
                 >
                   <div className="flex justify-between items-start gap-4 mb-2">
-                    <h3 className="font-serif font-bold text-lg text-marine dark:text-sable group-hover:text-terracotta transition-colors">
+                    <h3 className="font-serif font-bold text-lg text-marine dark:text-white group-hover:text-terracotta transition-colors">
                       {item.name}
                     </h3>
                     <span className="font-medium text-terracotta whitespace-nowrap bg-white/50 dark:bg-white/10 backdrop-blur-sm border border-white/50 dark:border-white/10 px-3 py-1 rounded-full text-sm shadow-sm">
@@ -200,7 +200,7 @@ export default function Menu() {
                     </span>
                   </div>
                   {item.desc && (
-                    <p className="text-sm text-marine/60 leading-relaxed">
+                    <p className="text-sm text-marine/60 dark:text-white/80 leading-relaxed">
                       {item.desc}
                     </p>
                   )}
