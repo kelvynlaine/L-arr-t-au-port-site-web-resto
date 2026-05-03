@@ -36,7 +36,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/20 backdrop-blur-sm border-b border-white/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] py-3' 
+          ? 'bg-white/20 dark:bg-marine/30 backdrop-blur-sm border-b border-white/30 dark:border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] py-3' 
           : 'bg-transparent py-5'
       }`}
     >
@@ -47,7 +47,7 @@ export default function Header() {
             href="#home"
             onClick={(e) => handleScrollTo(e, '#home')}
             className={`flex items-center gap-2 text-2xl font-serif font-bold transition-colors ${
-              isScrolled ? 'text-marine' : 'text-sable drop-shadow-md'
+              isScrolled ? 'text-marine dark:text-white' : 'text-sable dark:text-white drop-shadow-md'
             }`}
           >
             <Anchor className={isScrolled ? 'text-terracotta' : 'text-sable'} size={28} />

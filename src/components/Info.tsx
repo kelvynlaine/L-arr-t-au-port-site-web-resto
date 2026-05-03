@@ -42,14 +42,14 @@ export default function Info() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-white relative">
+    <section id="contact" className="py-24 bg-white dark:bg-marine relative transition-colors duration-300">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-serif font-bold text-marine mb-4"
+            className="text-4xl md:text-5xl font-serif font-bold text-marine dark:text-sable mb-4"
           >
             Horaires & Accès
           </motion.h2>
@@ -63,10 +63,10 @@ export default function Info() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="bg-sable/30 p-8 md:p-10 rounded-3xl border border-marine/5"
+            className="bg-sable/30 dark:bg-sable/5 p-8 md:p-10 rounded-3xl border border-marine/5 dark:border-white/5"
           >
             <motion.div variants={itemVariants} className="flex items-center justify-between mb-8">
-              <h3 className="text-2xl font-serif font-bold text-marine flex items-center gap-3">
+              <h3 className="text-2xl font-serif font-bold text-marine dark:text-sable flex items-center gap-3">
                 <Clock className="text-terracotta" />
                 Horaires d'Ouverture
               </h3>
@@ -77,40 +77,40 @@ export default function Info() {
               </span>
             </motion.div>
 
-            <motion.ul variants={itemVariants} className="space-y-4 mb-8">
-              <li className="flex justify-between border-b border-marine/10 pb-2">
-                <span className="font-medium text-marine">Lundi</span>
-                <span className="text-marine/80">8h00 - 23h00</span>
+            <motion.ul variants={itemVariants} className="space-y-4 mb-8 text-marine dark:text-sable/90">
+              <li className="flex justify-between border-b border-marine/10 dark:border-white/10 pb-2">
+                <span className="font-medium text-marine dark:text-sable">Lundi</span>
+                <span className="text-marine/80 dark:text-sable/70">8h00 - 23h00</span>
               </li>
-              <li className="flex justify-between border-b border-marine/10 pb-2 text-terracotta font-medium">
+              <li className="flex justify-between border-b border-marine/10 dark:border-white/10 pb-2 text-terracotta font-medium">
                 <span>Mardi</span>
                 <span>FERMÉ</span>
               </li>
-              <li className="flex justify-between border-b border-marine/10 pb-2 text-terracotta font-medium">
+              <li className="flex justify-between border-b border-marine/10 dark:border-white/10 pb-2 text-terracotta font-medium">
                 <span>Mercredi</span>
                 <span>FERMÉ</span>
               </li>
-              <li className="flex justify-between border-b border-marine/10 pb-2">
-                <span className="font-medium text-marine">Jeudi</span>
-                <span className="text-marine/80">8h00 - 23h00</span>
+              <li className="flex justify-between border-b border-marine/10 dark:border-white/10 pb-2">
+                <span className="font-medium text-marine dark:text-sable">Jeudi</span>
+                <span className="text-marine/80 dark:text-sable/70">8h00 - 23h00</span>
               </li>
-              <li className="flex justify-between border-b border-marine/10 pb-2">
-                <span className="font-medium text-marine">Vendredi</span>
-                <span className="text-marine/80">8h00 - 23h00</span>
+              <li className="flex justify-between border-b border-marine/10 dark:border-white/10 pb-2">
+                <span className="font-medium text-marine dark:text-sable">Vendredi</span>
+                <span className="text-marine/80 dark:text-sable/70">8h00 - 23h00</span>
               </li>
-              <li className="flex justify-between border-b border-marine/10 pb-2">
-                <span className="font-medium text-marine">Samedi</span>
-                <span className="text-marine/80">8h00 - 23h00</span>
+              <li className="flex justify-between border-b border-marine/10 dark:border-white/10 pb-2">
+                <span className="font-medium text-marine dark:text-sable">Samedi</span>
+                <span className="text-marine/80 dark:text-sable/70">8h00 - 23h00</span>
               </li>
               <li className="flex justify-between">
-                <span className="font-medium text-marine">Dimanche</span>
-                <span className="text-marine/80">8h00 - 23h00</span>
+                <span className="font-medium text-marine dark:text-sable">Dimanche</span>
+                <span className="text-marine/80 dark:text-sable/70">8h00 - 23h00</span>
               </li>
             </motion.ul>
 
-            <motion.div variants={itemVariants} className="bg-white p-4 rounded-xl shadow-sm text-sm text-marine/80">
-              <p className="mb-2">⚠️ <strong className="text-marine">Fermé le Mardi et le Mercredi</strong></p>
-              <p>🌞 <strong className="text-marine">Été :</strong> 8h-23h | ❄️ <strong className="text-marine">Hiver :</strong> 8h-18h</p>
+            <motion.div variants={itemVariants} className="bg-white dark:bg-marine/50 p-4 rounded-xl shadow-sm text-sm text-marine/80 dark:text-sable/80">
+              <p className="mb-2">⚠️ <strong className="text-marine dark:text-sable">Fermé le Mardi et le Mercredi</strong></p>
+              <p>🌞 <strong className="text-marine dark:text-sable">Été :</strong> 8h-23h | ❄️ <strong className="text-marine dark:text-sable">Hiver :</strong> 8h-18h</p>
             </motion.div>
           </motion.div>
 
@@ -123,23 +123,23 @@ export default function Info() {
             className="flex flex-col h-full"
           >
             <motion.div variants={itemVariants} className="mb-8">
-              <h3 className="text-2xl font-serif font-bold text-marine mb-6 flex items-center gap-3">
+              <h3 className="text-2xl font-serif font-bold text-marine dark:text-sable mb-6 flex items-center gap-3">
                 <MapPin className="text-terracotta" />
                 Nous Trouver
               </h3>
               
               <div className="space-y-6">
                 <div className="flex gap-4">
-                  <div className="w-10 h-10 bg-sable rounded-full flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 bg-sable dark:bg-white/10 rounded-full flex items-center justify-center shrink-0">
                     <MapPin size={20} className="text-terracotta" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-marine mb-1">Adresse</h4>
+                    <h4 className="font-bold text-marine dark:text-sable mb-1">Adresse</h4>
                     <a 
                       href="https://www.google.com/maps/dir/?api=1&destination=Base+Nautique,+Cagnes-sur-Mer" 
                       target="_blank" 
                       rel="noreferrer" 
-                      className="text-marine/80 hover:text-terracotta transition-colors block"
+                      className="text-marine/80 dark:text-sable/80 hover:text-terracotta transition-colors block"
                     >
                       Base Nautique<br/>Rue du Capitaine de Frégate Hippolyte Vial<br/>06800 Cagnes-sur-Mer, France
                     </a>
@@ -147,24 +147,24 @@ export default function Info() {
                 </div>
 
                 <div className="flex gap-4">
-                  <div className="w-10 h-10 bg-sable rounded-full flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 bg-sable dark:bg-white/10 rounded-full flex items-center justify-center shrink-0">
                     <Phone size={20} className="text-terracotta" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-marine mb-1">Téléphone</h4>
+                    <h4 className="font-bold text-marine dark:text-sable mb-1">Téléphone</h4>
                     <a href="tel:+33610901578" className="text-terracotta hover:underline font-medium">+33 6 10 90 15 78</a>
-                    <p className="text-xs text-marine/60 mt-1">Pas de réservation - Premier arrivé, premier servi !</p>
+                    <p className="text-xs text-marine/60 dark:text-sable/60 mt-1">Pas de réservation - Premier arrivé, premier servi !</p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 mt-4">
-                  <div className="flex items-center gap-2 text-sm text-marine/80">
+                  <div className="flex items-center gap-2 text-sm text-marine/80 dark:text-sable/80">
                     <Accessibility size={16} className="text-vert-eau" /> Entrée PMR
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-marine/80">
+                  <div className="flex items-center gap-2 text-sm text-marine/80 dark:text-sable/80">
                     <Car size={16} className="text-vert-eau" /> Parking à proximité
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-marine/80">
+                  <div className="flex items-center gap-2 text-sm text-marine/80 dark:text-sable/80">
                     <Bus size={16} className="text-vert-eau" /> Arrêt de bus proche
                   </div>
                 </div>

@@ -53,14 +53,15 @@ export default function Reviews() {
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 bg-marine/10 rounded-full flex items-center justify-center text-marine font-bold text-xl">
+                <div className="w-12 h-12 bg-marine/10 dark:bg-sable/10 rounded-full flex items-center justify-center text-marine dark:text-sable font-bold text-xl">
                   {review.name.charAt(0)}
                 </div>
                 <div>
-                  <h4 className="font-bold text-marine">{review.name}</h4>
-                  <div className="flex items-center gap-2 text-sm text-marine/60">
+                  <h4 className="font-bold text-marine dark:text-sable">{review.name}</h4>
+                  <div className="flex items-center gap-2 text-sm text-marine/60 dark:text-sable/60">
                     <span>{review.date}</span>
                     {review.isLocalGuide && (
-                      <span className="bg-marine/5 px-2 py-0.5 rounded text-xs">Local Guide</span>
+                      <span className="bg-marine/5 dark:bg-sable/5 px-2 py-0.5 rounded text-xs">Local Guide</span>
                     )}
                   </div>
                 </div>
@@ -72,7 +73,7 @@ export default function Reviews() {
                 ))}
               </div>
               
-              <p className="text-marine/80 italic line-clamp-4">"{review.text}"</p>
+              <p className="text-marine/80 dark:text-sable/80 italic line-clamp-4">"{review.text}"</p>
             </div>
           ))}
         </motion.div>

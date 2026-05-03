@@ -22,35 +22,35 @@ export default function Gallery() {
     : galleryItems.filter(item => item.category === activeCategory);
 
   return (
-    <section id="gallery" className="py-24 bg-sable/30">
+    <section id="gallery" className="py-24 bg-sable/30 dark:bg-marine transition-colors duration-300">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-serif font-bold text-marine mb-4"
+            className="text-4xl md:text-5xl font-serif font-bold text-marine dark:text-sable mb-4"
           >
             L'Ambiance
           </motion.h2>
-          <div className="w-20 h-1 bg-terracotta mx-auto mt-6 mb-8"></div>
+          <div className="w-20 h-1 bg-terracotta mx-auto mt-6"></div>
+        </div>
 
-          {/* Filters */}
-          <div className="flex flex-wrap justify-center gap-2 mb-10">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  activeCategory === cat 
-                    ? 'bg-marine text-white' 
-                    : 'bg-white text-marine border border-marine/10 hover:border-marine/30'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+        {/* Filters */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+                activeCategory === cat 
+                  ? 'bg-marine dark:bg-sable text-white dark:text-marine shadow-md' 
+                  : 'bg-white dark:bg-white/10 text-marine/70 dark:text-sable/70 hover:bg-marine/10 dark:hover:bg-white/20 hover:text-marine dark:hover:text-sable'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
 
         {/* Masonry Grid */}

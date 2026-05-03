@@ -27,7 +27,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-24 bg-sable">
+    <section id="about" className="py-24 bg-sable dark:bg-marine relative overflow-hidden transition-colors duration-300">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
@@ -60,20 +60,20 @@ export default function About() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-serif font-bold text-marine mb-6">
+            <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-serif font-bold text-marine dark:text-sable mb-6">
               Notre Histoire
             </motion.h2>
             
             <motion.div variants={itemVariants} className="w-20 h-1 bg-terracotta mb-8"></motion.div>
 
-            <motion.div variants={itemVariants} className="space-y-6 text-lg text-marine/80">
+            <motion.div variants={itemVariants} className="space-y-6 text-lg text-marine/80 dark:text-sable/80">
               <p>
                 <strong>L'arrêt au Port</strong>, c'est avant tout une histoire de passion et d'authenticité. Niché à la Base Nautique de Cagnes-sur-Mer, entre la plage de galets et le petit port pittoresque, notre restaurant vous accueille dans un cadre exceptionnel, face à la mer Méditerranée.
               </p>
               <p>
                 Notre philosophie est simple : une carte courte, des produits frais et locaux, une cuisine faite maison du petit-déjeuner au dessert. Pas de prétention, juste le plaisir de bien manger les pieds presque dans l'eau.
               </p>
-              <p className="font-medium italic text-marine">
+              <p className="font-medium italic text-marine dark:text-sable">
                 "Ici, pas de réservation possible - premier arrivé, premier servi ! Et oui, on tutoie tout le monde, c'est comme ça chez nous. Venez comme vous êtes, avec votre maillot sous le t-shirt et le sourire aux lèvres."
               </p>
             </motion.div>
@@ -84,10 +84,10 @@ export default function About() {
             >
               {features.map((feature, index) => (
                 <div key={index} className="flex items-center gap-3">
-                  <div className="p-2 bg-white rounded-lg shadow-sm border border-marine/5">
+                  <div className="p-2 bg-white dark:bg-white/10 rounded-lg shadow-sm border border-marine/5 dark:border-white/10">
                     {feature.icon}
                   </div>
-                  <span className="font-medium text-marine/90">{feature.text}</span>
+                  <span className="font-medium text-marine/90 dark:text-sable/90">{feature.text}</span>
                 </div>
               ))}
             </motion.div>
