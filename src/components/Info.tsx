@@ -174,7 +174,7 @@ export default function Info() {
             {/* Google Maps iframe */}
             <motion.div variants={itemVariants} className="flex-grow min-h-[250px] bg-sable rounded-2xl overflow-hidden shadow-md relative group">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.993685412497!2d7.164500000000001!3d43.6482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cdd25a5f1db5eb%3A0xc48c081e7d8d2b0!2sBase%20Nautique%20de%20Cagnes-sur-Mer!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr" 
+                src="https://maps.google.com/maps?q=Base+Nautique,+Rue+du+Capitaine+de+Fr%C3%A9gate+Hippolyte+Vial,+06800+Cagnes-sur-Mer&t=&z=16&ie=UTF8&iwloc=&output=embed" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
