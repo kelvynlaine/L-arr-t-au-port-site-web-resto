@@ -163,7 +163,7 @@ export default function Menu() {
             <button
               key={category.id}
               onClick={() => setActiveTab(category.id)}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-md border ${
+              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-sm border ${
                 activeTab === category.id
                   ? 'bg-white/40 text-marine border-white/60 shadow-[0_8px_32px_0_rgba(31,38,135,0.1)] scale-105 font-bold'
                   : 'bg-white/20 text-marine/80 border-white/30 hover:bg-white/30 hover:text-marine shadow-[0_4px_16px_0_rgba(31,38,135,0.05)]'
@@ -189,7 +189,7 @@ export default function Menu() {
                 <motion.div 
                   key={index} 
                   variants={itemVariants}
-                  className="p-6 rounded-2xl border border-white/40 bg-white/20 backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.1)] hover:border-white/60 hover:bg-white/30 transition-all duration-300 group"
+                  className="p-6 rounded-2xl border border-white/40 bg-white/20 backdrop-blur-sm shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.1)] hover:border-white/60 hover:bg-white/30 transition-all duration-300 group"
                 >
                   <div className="flex justify-between items-start gap-4 mb-2">
                     <h3 className="font-serif font-bold text-lg text-marine group-hover:text-terracotta transition-colors">
