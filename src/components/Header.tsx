@@ -35,7 +35,9 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-sable/95 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-5'
+        isScrolled 
+          ? 'bg-white/20 backdrop-blur-md border-b border-white/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] py-3' 
+          : 'bg-transparent py-5'
       }`}
     >
       <div className="container mx-auto px-4 md:px-6">
@@ -105,7 +107,7 @@ export default function Header() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-sable shadow-xl border-t border-marine/10 lg:hidden"
+            className="absolute top-full left-0 right-0 bg-white/30 backdrop-blur-lg shadow-[0_8px_32px_0_rgba(31,38,135,0.1)] border-b border-white/40 lg:hidden"
           >
             <div className="container mx-auto px-4 py-6 flex flex-col gap-4">
               <ul className="flex flex-col gap-4">

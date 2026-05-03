@@ -129,8 +129,11 @@ export default function Menu() {
   };
 
   return (
-    <section id="menu" className="py-24 bg-white relative">
-      <div className="absolute top-0 right-0 w-64 h-64 bg-sable/50 rounded-full blur-3xl -z-10 pointer-events-none transform translate-x-1/2 -translate-y-1/2"></div>
+    <section id="menu" className="py-24 bg-sable/40 relative overflow-hidden">
+      {/* Animated Background blobs for glassmorphism */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-terracotta/20 rounded-full blur-[100px] -z-10 animate-pulse"></div>
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-vert-eau/20 rounded-full blur-[120px] -z-10 opacity-70"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-marine/5 rounded-full blur-[150px] -z-10"></div>
       
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
@@ -155,15 +158,15 @@ export default function Menu() {
         </div>
 
         {/* Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-12 relative z-10">
           {menuData.map((category) => (
             <button
               key={category.id}
               onClick={() => setActiveTab(category.id)}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-md border ${
                 activeTab === category.id
-                  ? 'bg-marine text-white shadow-md scale-105'
-                  : 'bg-sable text-marine/80 hover:bg-sable/80 hover:text-marine'
+                  ? 'bg-white/40 text-marine border-white/60 shadow-[0_8px_32px_0_rgba(31,38,135,0.1)] scale-105 font-bold'
+                  : 'bg-white/20 text-marine/80 border-white/30 hover:bg-white/30 hover:text-marine shadow-[0_4px_16px_0_rgba(31,38,135,0.05)]'
               }`}
             >
               {category.label}
@@ -186,13 +189,13 @@ export default function Menu() {
                 <motion.div 
                   key={index} 
                   variants={itemVariants}
-                  className="p-5 rounded-xl border border-marine/10 bg-white hover:shadow-lg hover:border-terracotta/30 transition-all duration-300 group"
+                  className="p-6 rounded-2xl border border-white/40 bg-white/20 backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.1)] hover:border-white/60 hover:bg-white/30 transition-all duration-300 group"
                 >
                   <div className="flex justify-between items-start gap-4 mb-2">
                     <h3 className="font-serif font-bold text-lg text-marine group-hover:text-terracotta transition-colors">
                       {item.name}
                     </h3>
-                    <span className="font-medium text-terracotta whitespace-nowrap bg-terracotta/10 px-3 py-1 rounded-full text-sm">
+                    <span className="font-medium text-terracotta whitespace-nowrap bg-white/50 backdrop-blur-sm border border-white/50 px-3 py-1 rounded-full text-sm shadow-sm">
                       {item.price}
                     </span>
                   </div>
