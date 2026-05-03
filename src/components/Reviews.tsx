@@ -52,7 +52,6 @@ export default function Reviews() {
               className="w-[300px] md:w-[400px] flex-shrink-0 bg-white rounded-2xl p-6 shadow-xl border border-white/10"
             >
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-marine/10 rounded-full flex items-center justify-center text-marine font-bold text-xl">
                 <div className="w-12 h-12 bg-marine/10 dark:bg-sable/10 rounded-full flex items-center justify-center text-marine dark:text-sable font-bold text-xl">
                   {review.name.charAt(0)}
                 </div>
