@@ -7,9 +7,21 @@ import Gallery from './components/Gallery';
 import Reviews from './components/Reviews';
 import Info from './components/Info';
 import Footer from './components/Footer';
-import { AppProvider } from './context/AppContext';
+import { AppProvider, useAppContext } from './context/AppContext';
 
 function App() {
+  return (
+    <AppProvider>
+      <HelmetProvider>
+        <AppContent />
+      </HelmetProvider>
+    </AppProvider>
+  );
+}
+
+function AppContent() {
+  const { language } = useAppContext();
+  
   const schemaOrgJSONLD = {
     "@context": "https://schema.org",
     "@type": "Restaurant",
@@ -41,33 +53,29 @@ function App() {
   };
 
   return (
-    <AppProvider>
-      <HelmetProvider>
-        <div className="font-sans text-marine dark:text-sable bg-sable dark:bg-marine transition-colors duration-300">
-        <Helmet>
-          <title>L'arrêt au Port - Restaurant bord de mer à Cagnes-sur-Mer</title>
-          <meta name="description" content="L'arrêt au Port - Restaurant en bord de mer à Cagnes-sur-Mer. Cuisine authentique, produits frais et locaux, terrasse avec vue imprenable sur la Méditerranée. Ouvert tous les jours sauf mardi et mercredi." />
-          <meta name="keywords" content="restaurant Cagnes-sur-Mer, restaurant bord de mer, terrasse vue mer, cuisine méditerranéenne, petit-déjeuner Cagnes-sur-Mer, restaurant plage, L'arrêt au Port" />
-          <script type="application/ld+json">
-            {JSON.stringify(schemaOrgJSONLD)}
-          </script>
-        </Helmet>
+    <div className="font-sans text-marine dark:text-sable bg-sable dark:bg-marine transition-colors duration-300">
+      <Helmet>
+        <title>{language === 'fr' ? "L'arrêt au Port - Restaurant bord de mer à Cagnes-sur-Mer" : "L'arrêt au Port - Seaside Restaurant in Cagnes-sur-Mer"}</title>
+        <meta name="description" content={language === 'fr' ? "L'arrêt au Port - Restaurant en bord de mer à Cagnes-sur-Mer. Cuisine authentique, produits frais et locaux, terrasse avec vue imprenable sur la Méditerranée." : "L'arrêt au Port - Seaside restaurant in Cagnes-sur-Mer. Authentic cuisine, fresh and local products, terrace with breathtaking views of the Mediterranean."} />
+        <meta name="keywords" content="restaurant Cagnes-sur-Mer, seaside restaurant, sea view terrace, mediterranean cuisine, L'arrêt au Port" />
+        <script type="application/ld+json">
+          {JSON.stringify(schemaOrgJSONLD)}
+        </script>
+      </Helmet>
 
-        <Header />
-        
-        <main>
-          <Hero />
-          <About />
-          <Menu />
-          <Gallery />
-          <Reviews />
-          <Info />
-        </main>
+      <Header />
+      
+      <main>
+        <Hero />
+        <About />
+        <Menu />
+        <Gallery />
+        <Reviews />
+        <Info />
+      </main>
 
-        <Footer />
-      </div>
-    </HelmetProvider>
-    </AppProvider>
+      <Footer />
+    </div>
   );
 }
 
