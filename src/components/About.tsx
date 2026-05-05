@@ -22,12 +22,12 @@ export default function About() {
   };
 
   const features = [
-    { icon: <Waves className="text-terracotta" />, text: "Vue mer imprenable" },
-    { icon: <ChefHat className="text-terracotta" />, text: "Cuisine faite maison" },
-    { icon: <Leaf className="text-terracotta" />, text: "Produits locaux & frais" },
-    { icon: <Sun className="text-terracotta" />, text: "Terrasse en plein air" },
-    { icon: <Accessibility className="text-terracotta" />, text: "Accessible PMR" },
-    { icon: <Dog className="text-terracotta" />, text: "Animaux acceptés" },
+    { icon: <Waves className="text-terracotta" />, text: language === 'fr' ? "Vue mer imprenable" : "Breathtaking sea view" },
+    { icon: <ChefHat className="text-terracotta" />, text: language === 'fr' ? "Cuisine faite maison" : "Homemade cuisine" },
+    { icon: <Leaf className="text-terracotta" />, text: language === 'fr' ? "Produits locaux & frais" : "Local & fresh products" },
+    { icon: <Sun className="text-terracotta" />, text: language === 'fr' ? "Terrasse en plein air" : "Outdoor terrace" },
+    { icon: <Accessibility className="text-terracotta" />, text: language === 'fr' ? "Accessible PMR" : "Wheelchair accessible" },
+    { icon: <Dog className="text-terracotta" />, text: language === 'fr' ? "Animaux acceptés" : "Pets allowed" },
   ];
 
   return (

@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Clock, MapPin, Phone, Accessibility, Car, Bus } from 'lucide-react';
+import { useAppContext } from '../context/AppContext';
+import { t } from '../i18n';
 
 export default function Info() {
+  const { language } = useAppContext();
+  const currentT = t[language];
   const [isOpen, setIsOpen] = useState(true);
 
   useEffect(() => {
@@ -51,7 +55,7 @@ export default function Info() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-serif font-bold text-marine dark:text-sable mb-4"
           >
-            Horaires & Accès
+            {currentT.info.title}
           </motion.h2>
           <div className="w-20 h-1 bg-terracotta mx-auto mt-6"></div>
         </div>
@@ -68,49 +72,49 @@ export default function Info() {
             <motion.div variants={itemVariants} className="flex items-center justify-between mb-8">
               <h3 className="text-2xl font-serif font-bold text-marine dark:text-sable flex items-center gap-3">
                 <Clock className="text-terracotta" />
-                Horaires d'Ouverture
+                {currentT.info.hoursTitle}
               </h3>
               <span className={`px-3 py-1 rounded-full text-xs font-bold ${
                 isOpen ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
               }`}>
-                {isOpen ? 'Ouvert maintenant' : 'Fermé'}
+                {isOpen ? (language === 'fr' ? 'Ouvert maintenant' : 'Open now') : currentT.info.closed}
               </span>
             </motion.div>
 
             <motion.ul variants={itemVariants} className="space-y-4 mb-8 text-marine dark:text-sable/90">
               <li className="flex justify-between border-b border-marine/10 dark:border-white/10 pb-2">
-                <span className="font-medium text-marine dark:text-sable">Lundi</span>
+                <span className="font-medium text-marine dark:text-sable">{currentT.info.days[0]}</span>
                 <span className="text-marine/80 dark:text-sable/70">8h00 - 23h00</span>
               </li>
               <li className="flex justify-between border-b border-marine/10 dark:border-white/10 pb-2 text-terracotta font-medium">
-                <span>Mardi</span>
-                <span>FERMÉ</span>
+                <span>{currentT.info.days[1]}</span>
+                <span>{currentT.info.closed}</span>
               </li>
               <li className="flex justify-between border-b border-marine/10 dark:border-white/10 pb-2 text-terracotta font-medium">
-                <span>Mercredi</span>
-                <span>FERMÉ</span>
+                <span>{currentT.info.days[2]}</span>
+                <span>{currentT.info.closed}</span>
               </li>
               <li className="flex justify-between border-b border-marine/10 dark:border-white/10 pb-2">
-                <span className="font-medium text-marine dark:text-sable">Jeudi</span>
+                <span className="font-medium text-marine dark:text-sable">{currentT.info.days[3]}</span>
                 <span className="text-marine/80 dark:text-sable/70">8h00 - 23h00</span>
               </li>
               <li className="flex justify-between border-b border-marine/10 dark:border-white/10 pb-2">
-                <span className="font-medium text-marine dark:text-sable">Vendredi</span>
+                <span className="font-medium text-marine dark:text-sable">{currentT.info.days[4]}</span>
                 <span className="text-marine/80 dark:text-sable/70">8h00 - 23h00</span>
               </li>
               <li className="flex justify-between border-b border-marine/10 dark:border-white/10 pb-2">
-                <span className="font-medium text-marine dark:text-sable">Samedi</span>
+                <span className="font-medium text-marine dark:text-sable">{currentT.info.days[5]}</span>
                 <span className="text-marine/80 dark:text-sable/70">8h00 - 23h00</span>
               </li>
               <li className="flex justify-between">
-                <span className="font-medium text-marine dark:text-sable">Dimanche</span>
+                <span className="font-medium text-marine dark:text-sable">{currentT.info.days[6]}</span>
                 <span className="text-marine/80 dark:text-sable/70">8h00 - 23h00</span>
               </li>
             </motion.ul>
 
             <motion.div variants={itemVariants} className="bg-white dark:bg-marine/50 p-4 rounded-xl shadow-sm text-sm text-marine/80 dark:text-sable/80">
-              <p className="mb-2">⚠️ <strong className="text-marine dark:text-sable">Fermé le Mardi et le Mercredi</strong></p>
-              <p>🌞 <strong className="text-marine dark:text-sable">Été :</strong> 8h-23h | ❄️ <strong className="text-marine dark:text-sable">Hiver :</strong> 8h-18h</p>
+              <p className="mb-2">⚠️ <strong className="text-marine dark:text-sable">{currentT.info.notice1}</strong></p>
+              <p>🌞 <strong className="text-marine dark:text-sable">{currentT.info.notice2.split(' | ')[0]}</strong> | ❄️ <strong className="text-marine dark:text-sable">{currentT.info.notice2.split(' | ')[1]}</strong></p>
             </motion.div>
           </motion.div>
 
@@ -125,7 +129,7 @@ export default function Info() {
             <motion.div variants={itemVariants} className="mb-8">
               <h3 className="text-2xl font-serif font-bold text-marine dark:text-sable mb-6 flex items-center gap-3">
                 <MapPin className="text-terracotta" />
-                Nous Trouver
+                {currentT.info.findUs}
               </h3>
               
               <div className="space-y-6">
@@ -134,7 +138,7 @@ export default function Info() {
                     <MapPin size={20} className="text-terracotta" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-marine dark:text-sable mb-1">Adresse</h4>
+                    <h4 className="font-bold text-marine dark:text-sable mb-1">{currentT.info.address}</h4>
                     <a 
                       href="https://www.google.com/maps/dir/?api=1&destination=Base+Nautique,+Cagnes-sur-Mer" 
                       target="_blank" 
@@ -151,21 +155,21 @@ export default function Info() {
                     <Phone size={20} className="text-terracotta" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-marine dark:text-sable mb-1">Téléphone</h4>
+                    <h4 className="font-bold text-marine dark:text-sable mb-1">{currentT.info.phone}</h4>
                     <a href="tel:+33610901578" className="text-terracotta hover:underline font-medium">+33 6 10 90 15 78</a>
-                    <p className="text-xs text-marine/60 dark:text-sable/60 mt-1">Pas de réservation - Premier arrivé, premier servi !</p>
+                    <p className="text-xs text-marine/60 dark:text-sable/60 mt-1">{currentT.info.noRes}</p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 mt-4">
                   <div className="flex items-center gap-2 text-sm text-marine/80 dark:text-sable/80">
-                    <Accessibility size={16} className="text-vert-eau" /> Entrée PMR
+                    <Accessibility size={16} className="text-vert-eau" /> {currentT.info.pmr}
                   </div>
                   <div className="flex items-center gap-2 text-sm text-marine/80 dark:text-sable/80">
-                    <Car size={16} className="text-vert-eau" /> Parking à proximité
+                    <Car size={16} className="text-vert-eau" /> {currentT.info.parking}
                   </div>
                   <div className="flex items-center gap-2 text-sm text-marine/80 dark:text-sable/80">
-                    <Bus size={16} className="text-vert-eau" /> Arrêt de bus proche
+                    <Bus size={16} className="text-vert-eau" /> {currentT.info.bus}
                   </div>
                 </div>
               </div>
@@ -188,10 +192,10 @@ export default function Info() {
                   href="https://www.google.com/maps/dir/?api=1&destination=Base+Nautique,+Cagnes-sur-Mer" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="btn bg-marine text-white border-none shadow-xl hover:bg-marine/90 hover:scale-105 transition-all rounded-full px-6"
+                  className="btn bg-marine text-white border-none shadow-xl hover:bg-marine/90 hover:scale-105 transition-all rounded-full px-6 whitespace-nowrap"
                 >
                   <MapPin size={18} className="mr-1" />
-                  Calculer l'itinéraire
+                  {currentT.info.calcRoute}
                 </a>
               </div>
             </motion.div>

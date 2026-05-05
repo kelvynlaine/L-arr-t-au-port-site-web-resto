@@ -1,6 +1,11 @@
 import { Anchor, MapPin } from 'lucide-react';
+import { useAppContext } from '../context/AppContext';
+import { t } from '../i18n';
 
 export default function Footer() {
+  const { language } = useAppContext();
+  const currentT = t[language];
+
   return (
     <footer className="bg-marine text-sable pt-16 pb-8 border-t-4 border-terracotta">
       <div className="container mx-auto px-4 md:px-6">
@@ -13,7 +18,7 @@ export default function Footer() {
               <span>L'arrêt au Port</span>
             </div>
             <p className="text-sable/80 mb-6 text-sm leading-relaxed">
-              L'authenticité méditerranéenne au bord de l'eau. Cuisine simple, fraîche et généreuse à Cagnes-sur-Mer.
+              {currentT.footer.slogan} {language === 'fr' ? 'Cuisine simple, fraîche et généreuse à Cagnes-sur-Mer.' : 'Simple, fresh, and generous cuisine in Cagnes-sur-Mer.'}
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-terracotta hover:text-white transition-colors">
@@ -27,34 +32,34 @@ export default function Footer() {
 
           {/* Col 2 */}
           <div>
-            <h4 className="font-bold text-lg text-white mb-6 font-serif">Liens Rapides</h4>
+            <h4 className="font-bold text-lg text-white mb-6 font-serif">{currentT.footer.quickLinks}</h4>
             <ul className="space-y-3">
-              <li><a href="#home" className="text-sable/80 hover:text-terracotta transition-colors">Accueil</a></li>
-              <li><a href="#menu" className="text-sable/80 hover:text-terracotta transition-colors">Notre Carte</a></li>
-              <li><a href="#gallery" className="text-sable/80 hover:text-terracotta transition-colors">Galerie</a></li>
-              <li><a href="#reviews" className="text-sable/80 hover:text-terracotta transition-colors">Avis Clients</a></li>
-              <li><a href="#contact" className="text-sable/80 hover:text-terracotta transition-colors">Contact</a></li>
+              <li><a href="#home" className="text-sable/80 hover:text-terracotta transition-colors">{currentT.nav.home}</a></li>
+              <li><a href="#menu" className="text-sable/80 hover:text-terracotta transition-colors">{currentT.nav.menu}</a></li>
+              <li><a href="#gallery" className="text-sable/80 hover:text-terracotta transition-colors">{currentT.nav.gallery}</a></li>
+              <li><a href="#reviews" className="text-sable/80 hover:text-terracotta transition-colors">{language === 'fr' ? 'Avis Clients' : 'Reviews'}</a></li>
+              <li><a href="#contact" className="text-sable/80 hover:text-terracotta transition-colors">{currentT.nav.contact}</a></li>
             </ul>
           </div>
 
           {/* Col 3 */}
           <div>
-            <h4 className="font-bold text-lg text-white mb-6 font-serif">Infos Pratiques</h4>
+            <h4 className="font-bold text-lg text-white mb-6 font-serif">{language === 'fr' ? 'Infos Pratiques' : 'Practical Info'}</h4>
             <ul className="space-y-3 text-sm text-sable/80">
-              <li><strong>Lun - Dim :</strong> 8h - 23h (Été)</li>
-              <li className="text-terracotta"><strong>Mar - Mer :</strong> Fermé</li>
+              <li><strong>{language === 'fr' ? 'Lun - Dim :' : 'Mon - Sun :'}</strong> {language === 'fr' ? '8h - 23h (Été)' : '8am - 11pm (Summer)'}</li>
+              <li className="text-terracotta"><strong>{language === 'fr' ? 'Mar - Mer :' : 'Tue - Wed :'}</strong> {currentT.info.closed}</li>
               <li className="pt-2">
                 <a href="tel:+33610901578" className="text-white hover:text-terracotta transition-colors font-medium text-base">
                   +33 6 10 90 15 78
                 </a>
               </li>
-              <li className="italic">Sans réservation</li>
+              <li className="italic">{language === 'fr' ? 'Sans réservation' : 'No reservations'}</li>
             </ul>
           </div>
 
           {/* Col 4 */}
           <div>
-            <h4 className="font-bold text-lg text-white mb-6 font-serif">Nous Trouver</h4>
+            <h4 className="font-bold text-lg text-white mb-6 font-serif">{currentT.info.findUs}</h4>
             <a 
               href="https://maps.google.com/?q=Base+Nautique+Cagnes-sur-Mer" 
               target="_blank" 
@@ -66,7 +71,7 @@ export default function Footer() {
                   <MapPin size={24} />
                 </div>
                 <div>
-                  <h5 className="font-bold text-white mb-1">Ouvrir dans Maps</h5>
+                  <h5 className="font-bold text-white mb-1">{language === 'fr' ? 'Ouvrir dans Maps' : 'Open in Maps'}</h5>
                   <p className="text-xs text-sable/60">Base Nautique, Cagnes-sur-Mer</p>
                 </div>
               </div>
@@ -76,10 +81,10 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-sable/60">
-          <p>© 2025 L'arrêt au Port - Tous droits réservés.</p>
+          <p>© 2025 L'arrêt au Port - {currentT.footer.rights}</p>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-white transition-colors">Mentions légales</a>
-            <a href="#" className="hover:text-white transition-colors">Politique de confidentialité</a>
+            <a href="#" className="hover:text-white transition-colors">{currentT.footer.legal}</a>
+            <a href="#" className="hover:text-white transition-colors">{currentT.footer.privacy}</a>
           </div>
         </div>
       </div>

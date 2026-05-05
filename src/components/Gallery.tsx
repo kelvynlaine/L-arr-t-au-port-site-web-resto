@@ -1,25 +1,50 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ZoomIn } from 'lucide-react';
+import { useAppContext } from '../context/AppContext';
+import { t } from '../i18n';
 
-const galleryItems = [
-  { id: 1, src: '/images/hero_terrace.png', category: 'La Terrasse', title: 'Vue depuis la terrasse' },
-  { id: 2, src: '/images/menu_pasta.png', category: 'Les Plats', title: 'Pâtes au pesto maison' },
-  { id: 3, src: '/images/menu_breakfast.png', category: 'Les Desserts', title: 'Petit-déjeuner au soleil' }, // Assuming it fits
-  { id: 4, src: '/images/menu_board.png', category: 'Les Plats', title: 'Planche apéritive' },
-  { id: 5, src: '/images/view_port.png', category: 'La Vue', title: 'Vue sur le port' },
-  { id: 6, src: '/images/about_story.png', category: 'La Terrasse', title: 'Coucher de soleil' },
-];
-
-const categories = ['Toutes', 'La Terrasse', 'Les Plats', 'La Vue', 'Les Desserts'];
+const galleryData: Record<string, { categories: string[], items: any[] }> = {
+  fr: {
+    categories: ['Toutes', 'La Terrasse', 'Les Plats', 'La Vue', 'Les Desserts'],
+    items: [
+      { id: 1, src: '/images/hero_terrace.png', category: 'La Terrasse', title: 'Vue depuis la terrasse' },
+      { id: 2, src: '/images/menu_pasta.png', category: 'Les Plats', title: 'Pâtes au pesto maison' },
+      { id: 3, src: '/images/menu_breakfast.png', category: 'Les Desserts', title: 'Petit-déjeuner au soleil' },
+      { id: 4, src: '/images/menu_board.png', category: 'Les Plats', title: 'Planche apéritive' },
+      { id: 5, src: '/images/view_port.png', category: 'La Vue', title: 'Vue sur le port' },
+      { id: 6, src: '/images/about_story.png', category: 'La Terrasse', title: 'Coucher de soleil' },
+    ]
+  },
+  en: {
+    categories: ['All', 'The Terrace', 'Dishes', 'The View', 'Desserts'],
+    items: [
+      { id: 1, src: '/images/hero_terrace.png', category: 'The Terrace', title: 'View from the terrace' },
+      { id: 2, src: '/images/menu_pasta.png', category: 'Dishes', title: 'Homemade pesto pasta' },
+      { id: 3, src: '/images/menu_breakfast.png', category: 'Desserts', title: 'Breakfast in the sun' },
+      { id: 4, src: '/images/menu_board.png', category: 'Dishes', title: 'Aperitif board' },
+      { id: 5, src: '/images/view_port.png', category: 'The View', title: 'View of the port' },
+      { id: 6, src: '/images/about_story.png', category: 'The Terrace', title: 'Sunset' },
+    ]
+  }
+};
 
 export default function Gallery() {
-  const [activeCategory, setActiveCategory] = useState('Toutes');
+  const { language } = useAppContext();
+  const currentT = t[language];
+  const { categories, items } = galleryData[language];
+  
+  const [activeCategory, setActiveCategory] = useState(categories[0]);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const filteredItems = activeCategory === 'Toutes' 
-    ? galleryItems 
-    : galleryItems.filter(item => item.category === activeCategory);
+  // Reset active category when language changes
+  useEffect(() => {
+    setActiveCategory(categories[0]);
+  }, [language, categories]);
+
+  const filteredItems = activeCategory === categories[0] 
+    ? items 
+    : items.filter(item => item.category === activeCategory);
 
   return (
     <section id="gallery" className="py-24 bg-sable/30 dark:bg-marine transition-colors duration-300">
@@ -31,7 +56,7 @@ export default function Gallery() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-serif font-bold text-marine dark:text-sable mb-4"
           >
-            L'Ambiance
+            {currentT.gallery.title}
           </motion.h2>
           <div className="w-20 h-1 bg-terracotta mx-auto mt-6"></div>
         </div>

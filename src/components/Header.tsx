@@ -80,7 +80,7 @@ export default function Header() {
                 <span className={isScrolled ? 'text-marine' : 'text-sable'}>4.5</span>
                 <Star className="text-yellow-400 fill-current" size={14} />
                 <span className={`opacity-80 ${isScrolled ? 'text-marine' : 'text-sable'}`}>
-                  (1 389 avis)
+                  {language === 'fr' ? '(1 389 avis)' : '(1,389 reviews)'}
                 </span>
               </div>
               <a
@@ -182,7 +182,7 @@ export default function Header() {
                 <div className="flex items-center gap-1 bg-white px-3 py-1.5 rounded-full shadow-sm text-xs font-semibold text-marine">
                   <span>4.5</span>
                   <Star className="text-yellow-400 fill-current" size={14} />
-                  <span className="opacity-80">(1 389 avis Google)</span>
+                  <span className="opacity-80">{language === 'fr' ? '(1 389 avis Google)' : '(1,389 Google reviews)'}</span>
                 </div>
               </div>
               
